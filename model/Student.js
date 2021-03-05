@@ -25,4 +25,4 @@ let Student = new Schema({
 }, {
     collection: 'students'
 })
-module.exports =  mogoose.model('Student', Student)
+module.exports =  mongoose.model('Student', Student)

@@ -1,8 +1,8 @@
 {
-  "name": "package.json",
+  "name": "angular-meanstack-angular-material",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "An Angular meanstack crud web app with material UI",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -3,7 +3,8 @@ const app = express();
 const studentRoute = express.Router();
 
 //Student model
-let Student = require('..model/Student');
+let Student = require('../model/Student');
+
 
 //Add Student
 studentRoute.route('/add-student').post((req, resp, next) =>{
@@ -55,13 +56,16 @@ studentRoute.route('/update-student/:id').put((req, res, next) =>{
 
 //Delete Student
 studentRoute.route('/delete-student/:id').delete((req, res, next)=>{
-    if (error){
-        return next(error);
-    } else {
-        res.status(200).json({
-            msg: data
-        })
-    }
+    Student.findByIdAndRemove(req.params.id, (error, data) => {
+        if (error){
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            })
+        }
+    })
+
 })
 
 module.exports = studentRoute;

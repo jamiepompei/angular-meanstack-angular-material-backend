@@ -8,7 +8,7 @@ let express = require('express'),
 //Connecting mongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect(dataBaseConfig.db,{
-    userNewUrlParser: true,
+    useNewUrlParser: true,
     useFindAndModify: false
 }).then(() => {
     console.log('Database connected successfully ')
@@ -21,6 +21,7 @@ error => {
 //set up express js port
 const studentRoute = require('./routes/student.route')
 
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 //setting up static directory
-app.use(express.static(path.join(_dirname, 'dist/angular-meanstack-angular-material')));
+// app.use(express.static(path.join(_dirname, 'dist/angular-meanstack-angular-material')));
 
 //RESTful API root
 app.use('/api', studentRoute)
@@ -52,7 +53,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.json(_dirname, 'dist/angular-meanstack-angular-material/index.html'))
+    res.sendFile(path.json(_dirname, 'dist/meanstack-angular-material/index.html'))
 });
 
 //error handler
